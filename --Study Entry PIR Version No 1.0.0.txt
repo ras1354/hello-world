@@ -1,0 +1,42 @@
+--[[
+%% properties
+90 value
+%% globals
+
+--]]
+
+
+--Study Entry PIR Version No 1.0.0
+--Change Log at bottom of scene
+
+--Discrip:	Stores the Date/Time of a high going PIR trigger in a Global Var
+
+--Trigger:	Study Entry Sensor
+
+
+local iEntPirId = 90    --Trigger				--Entry PIR
+local strEntPirHiDtId = "StudyEntPirHiDt"		--Global holding PIR Dt data	
+
+--Get Entry PIR Data
+strTempVal, iTempDt = fibaro:get(iEntPirId, "value")
+
+--If trigger going high store data to Global var
+if strTempVal ~= "0" then
+	fibaro:setGlobal(strEntPirHiDtId, iTempDt)
+	fibaro:debug("Stored time is "..iTempDt)
+end
+
+
+
+--[[
+
+Change Log
+
+04/04/15 Ver 1.0.0 Initial Test Release
+
+
+
+Program Notes:
+
+
+]]
