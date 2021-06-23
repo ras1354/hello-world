@@ -1,0 +1,5 @@
+def nfGetGlobalVariable(sAddr, sHcTargetGlobal):
+    r = requests.get(sAddr + 'globalVariables/' + sHcTargetGlobal)
+    iStatus = r.status_code
+    dDir = json.loads(r.text)        # json string from HC converted to dict
+    return [iStatus,dDir["value"]]   # return list of status code and directory
